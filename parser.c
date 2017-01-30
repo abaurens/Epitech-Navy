@@ -5,7 +5,7 @@
 ** Login   <arthur.baurens@epitech.eu>
 **
 ** Started on  Mon Jan 30 15:58:14 2017 Arthur Baurens
-** Last update Mon Jan 30 16:38:24 2017 Arthur Baurens
+** Last update Mon Jan 30 18:21:56 2017 Arthur Baurens
 */
 
 #include <stdlib.h>
@@ -48,11 +48,13 @@ char	**get_map(const char *name)
   char	**map;
   char	*line;
 
+  if ((map = alloc_map()) == NULL)
+    return (NULL);
   if ((fd = open(name, O_RDONLY)) < 0)
     return (NULL);
-  map = alloc_map();
   while ((line = get_next_line(fd)))
     {
+      printf("%s\n", line);
       free(line);
     }
   return (map);
