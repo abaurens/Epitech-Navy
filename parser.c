@@ -5,8 +5,10 @@
 ** Login   <arthur.baurens@epitech.eu>
 **
 ** Started on  Mon Jan 30 15:58:14 2017 Arthur Baurens
-** Last update Mon Jan 30 18:21:56 2017 Arthur Baurens
+** Last update Tue Jan 31 03:53:43 2017 Arthur Baurens
 */
+
+# include <stdio.h>
 
 #include <stdlib.h>
 #include <sys/types.h>
@@ -42,11 +44,54 @@ static char	**alloc_map()
   return (map);
 }
 
+char	parse_line(char *line, char **map)
+{
+  t_vec	v1;
+  t_vec	v2;
+  char	**data;
+
+
+  printf("parsing line : %s\n", line);
+  data = my_split(line, ':');
+  /*
+  if ((data)) == NULL)
+    return (-1);
+
+  printf("\tdata[0] : %s\n", data[0]);
+  if (!is_num(data[0]))
+    return (-printf("\t\t/!\\ Not a number !\n"));
+  printf("\t\tOK\n");
+  free(data[0]);
+
+  printf("\tdata[1] : %s\n", data[1]);
+  if (data[1] == NULL)
+    return (-printf("\t\t/!\\ Missing data !\n"));
+  if ((v1.x = indexof(ALPHA, data[1][0])) == str_len(ALPHA))
+    return (-printf("\t\t/!\\ Invalid data !\n"));
+  if (!is_num(&data[1][1]) || (v1.y = my_getnbr(&data[1][1])) <= 0)
+    return (-printf("\t\t/!\\ Invalid data !\n"));
+  printf("\t\tOK\n");
+  free(data[1]);
+
+  printf("\tdata[2] : %s\n", data[2]);
+  if (data[2] == NULL)
+    return (-printf("\t\t/!\\ Missing data !\n"));
+  if ((v2.x = indexof(ALPHA, data[2][0])) == str_len(ALPHA))
+    return (-printf("\t\t/!\\ Invalid data !\n"));
+  if (!is_num(&data[2][1]) || (v2.y = my_getnbr(&data[2][1])) <= 0)
+    return (-printf("\t\t/!\\ Invalid data !\n"));
+  printf("\t\tOK\n");
+  free(data[2]);
+  */
+  return (0);
+}
+
 char	**get_map(const char *name)
 {
   int	fd;
   char	**map;
   char	*line;
+  char	**data;
 
   if ((map = alloc_map()) == NULL)
     return (NULL);
@@ -54,8 +99,9 @@ char	**get_map(const char *name)
     return (NULL);
   while ((line = get_next_line(fd)))
     {
-      printf("%s\n", line);
-      free(line);
+      parse_line(line, map);
+      //free(line);
     }
+  printf("\n\n\n\n\n");
   return (map);
 }
